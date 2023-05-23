@@ -3,19 +3,17 @@ package com.tailus.students.services;
 import com.tailus.students.entities.Student;
 import com.tailus.students.repositories.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.core.CrudMethods;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
 @Transactional
 public class StudentService implements StudentServiceInterface {
 
-    @Autowired
-    public StudentRepo studentRepo;
+    @Autowired private StudentRepo studentRepo;
 
     @Override
     public void deleteAll() {
@@ -38,17 +36,17 @@ public class StudentService implements StudentServiceInterface {
     }
 
     @Override
-    public Iterable<Student> findAll() {
+    public ArrayList<Student> findAll() {
          Iterable<Student> studentsList = studentRepo.findAll();
         studentsList.forEach(student -> {
             System.out.println(student.getName());
         });
-        return studentsList;
+        return (ArrayList<Student>) studentsList;
     }
 
     @Override
-    public Iterable<Student> findAllById(Iterable<Long> iterable) {
-        return studentRepo.findAllById(iterable);
+    public ArrayList<Student> findAllById(Iterable<Long> iterable) {
+        return (ArrayList<Student>) studentRepo.findAllById(iterable);
     }
 
     @Override
@@ -62,8 +60,8 @@ public class StudentService implements StudentServiceInterface {
     }
 
     @Override
-    public Iterable<Student> saveAll(Iterable<Student> iterable) {
-        return studentRepo.saveAll(iterable);
+    public ArrayList<Student> saveAll(ArrayList<Student> iterable) {
+        return (ArrayList<Student>) studentRepo.saveAll(iterable);
     }
 
     @Override
