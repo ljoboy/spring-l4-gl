@@ -37,11 +37,7 @@ public class StudentService implements StudentServiceInterface {
 
     @Override
     public ArrayList<Student> findAll() {
-         Iterable<Student> studentsList = studentRepo.findAll();
-        studentsList.forEach(student -> {
-            System.out.println(student.getName());
-        });
-        return (ArrayList<Student>) studentsList;
+        return (ArrayList<Student>) studentRepo.findAll();
     }
 
     @Override
