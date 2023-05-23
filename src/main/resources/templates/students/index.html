@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Affiche la liste des étudiants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<!-- Tableau centré avec la liste des étudiants -->
+<div class="container mx-auto">
+    <h1 class="text-4xl text-center mb-8">Liste des étudiants</h1>
+    <table class="table-auto w-full">
+        <thead>
+        <tr>
+            <th class="px-4 py-2">id</th>
+            <th class="px-4 py-2">Nom</th>
+            <th class="px-4 py-2">Matricule</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Genre</th>
+            <th class="px-4 py-2">Téléphone</th>
+            <th class="px-4 py-2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- boucle thymeleaf 'studentsList' -->
+        <tr>
+            <td class="border px-4 py-2" th:text="${student.id}"></td>
+            <td class="border px-4 py-2" th:text="${student.nom}"></td>
+            <td class="border px-4 py-2" th:text="${student.matricule}"></td>
+            <td class="border px-4 py-2" th:text="${student.email}"></td>
+            <td class="border px-4 py-2" th:text="${student.genre}"></td>
+            <td class="border px-4 py-2" th:text="${student.phone}"></td>
+            <td class="border px-4 py-2">
+                <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier</a>
+                <a href="#" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
