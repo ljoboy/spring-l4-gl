@@ -7,18 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Optional;
+import java.util.ArrayList;
 
 @Controller
 public class StudentsController {
-    @Autowired
-    public StudentServiceInterface service;
+    @Autowired private StudentServiceInterface service;
 
-    public Optional<Student> studentsList;
+    public ArrayList<Student> studentsList;
     @GetMapping("/")
     public String index(Model model) {
-        studentsList = service.findById(1L);
-
+        studentsList = service.findAll();
         model.addAttribute("students", studentsList);
 
         return "students/index";
