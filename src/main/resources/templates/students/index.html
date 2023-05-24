@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Affiche la liste des étudiants</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<!-- Tableau centré avec la liste des étudiants -->
-<div class="container mx-auto">
+<div class="container mx-auto px-8">
     <h1 class="text-4xl text-center mb-8">Liste des étudiants</h1>
+<!--    Ajouter un étudiant -->
+    <div class="flex justify-end mb-4">
+        <a href="/add" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ajouter un étudiant</a>
+    </div>
     <table class="table-auto w-full">
         <thead>
         <tr>
@@ -31,8 +34,10 @@
             <td class="border px-4 py-2" th:text="${student.genre}"></td>
             <td class="border px-4 py-2" th:text="${student.phone}"></td>
             <td class="border px-4 py-2">
-                <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier</a>
-                <a href="#" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</a>
+                <a href="#" th:href="'/edit/' + ${student.id}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier</a>
+                <form class="inline-block" method="post" th:action="'/delete/' + ${student.id}">
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</button>
+                </form>
             </td>
         </tbody>
     </table>

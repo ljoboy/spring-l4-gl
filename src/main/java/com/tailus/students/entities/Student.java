@@ -1,6 +1,7 @@
 package com.tailus.students.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "students")
@@ -9,9 +10,9 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private static int counter = 0;
 
-
-    @Column(nullable = false, unique = true, length = 10)
+    @Column(nullable = false, unique = true, length = 10, updatable = false)
     private String matricule;
 
     @Column(nullable = false, length = 50)
@@ -20,7 +21,7 @@ public class Student {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 15)
+    @Column(nullable = false, length = 20)
     private String phone;
 
     @Column(nullable = false, length = 2)
@@ -96,6 +97,9 @@ public class Student {
     }
 
     public void genMatricule() {
-        this.matricule = "23" + name.substring(0, 2).toUpperCase() + phone.substring(0, 3);
+        counter++;
+        if (this.matricule == null) {
+            this.matricule = "23" + name.substring(0, 2).toUpperCase() + String.format("%03d", counter);
+        }
     }
 }

@@ -56,8 +56,8 @@ public class StudentService implements StudentServiceInterface {
     }
 
     @Override
-    public ArrayList<Student> saveAll(ArrayList<Student> iterable) {
-        return (ArrayList<Student>) studentRepo.saveAll(iterable);
+    public ArrayList<Student> saveAll(ArrayList<Student> students) {
+        return (ArrayList<Student>) studentRepo.saveAll(students);
     }
 
     @Override

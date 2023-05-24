@@ -18,12 +18,12 @@ class StudentsApplicationTests {
     public StudentRepo studentRepo;
     @Test
     public void save() {
-        Student student = new Student();
-        student.setName("John Doe");
-        student.setMatricule("987654321");
-        student.setEmail("john@doe.com");
-        student.setGenre("M");
-        student.setPhone("987654321");
+        Student student = new Student(
+                "Nathan Mwape",
+                "nathan@mwape.com",
+                "+243123456789",
+                "M"
+        );
 
         studentRepo.save(student);
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un étudiant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="container mx-auto px-8">
+    <h1 class="text-4xl text-center mb-8">Ajouter un étudiant</h1>
+    <form th:action="${'/edit/' + student.id}" method="post">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nom</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="name"
+                   type="text"
+                   placeholder="Nom de l'étudiant"
+                   name="name"
+                   th:value="${student.name}"
+                   required/>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="email"
+                   type="email"
+                   placeholder="Email de l'étudiant"
+                   name="email"
+                   th:value="${student.email}"
+                   required/>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="genre">Genre</label>
+            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="genre"
+                    name="genre"
+                    required>
+                <option value="M" th:selected="${student.getGenre() == 'M'}">Masculin</option>
+                <option value="F" th:selected="${student.getGenre() == 'F'}">Féminin</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">Téléphone</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="phone"
+                   type="text"
+                   placeholder="Téléphone de l'étudiant"
+                   name="phone"
+                   th:value="${student.phone}"
+                   required/>
+        </div>
+        <div class="flex items-center justify-between">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                Modifier
+            </button>
+            <a href="/"
+               class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                Annuler
+            </a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
